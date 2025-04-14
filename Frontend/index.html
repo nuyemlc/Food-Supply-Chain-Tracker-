@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Supply Chain Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Food Supply Chain Tracker</h1>
+      <p>Track food origins and destinations with ease.</p>
+      <a href="worldmap.html" class="btn btn-primary">Get Started</a>
+      <div class="nav-buttons">
+        <a href="worldmap.html" class="btn btn-outline-primary">🌍 World Map</a>
+        <a href="productlist.html" class="btn btn-outline-warning">📦 Product List</a>
+        <a href="compare.html" class="btn btn-outline-info">📊 Compare Emissions</a>
+        <a href="reviews.html" class="btn btn-outline-secondary">💬 Reviews</a>
+      </div>
+    </div>
+
+    <div id="journeyCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/farm.jpg" class="d-block w-100" alt="Farm harvest">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Farm to Fork</h5>
+            <p>Fresh, organic produce from ethical farms.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/food in factory.jpg" class="d-block w-100" alt="Factory preparation">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Processing Stage</h5>
+            <p>Safe and sustainable food handling and packaging.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/food-transportation.jpg" class="d-block w-100" alt="Food transportation">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Transport & Shipping</h5>
+            <p>Efficient and low-emission food logistics.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/food in store.jpg" class="d-block w-100" alt="Food in store">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Retail Stage</h5>
+            <p>Products ready for sustainable consumption.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#journeyCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#journeyCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
