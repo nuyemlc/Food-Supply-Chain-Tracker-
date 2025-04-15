@@ -178,16 +178,13 @@ body {
 }
 
 .hover-zone.left:hover ~ .hero{
-  translate: translateX(5%);
+  transform: translateX(-120%);
 }
 
 .hover-zone.right:hover ~ .hero{
-  transform: translateX(-5%);
+  transform: translateX(120%);
 }
 
 .hero{
-  transition: transform 0.6s ease-in-out;
-  will-change: trasnform;
-  position: relative;
-  z-index: 2;
+  transition: transform 0.8s ease-in-out;
 }

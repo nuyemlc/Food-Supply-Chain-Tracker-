@@ -66,5 +66,28 @@
   </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <div class="overlay"></div>
+  <script>
+    const leftZone = document.querySelector('.hover-zone.left');
+    const rightZone = document.querySelector('.hover-zone.right');
+    const body = document.body;
+  
+    leftZone.addEventListener('mouseenter', () => {
+      body.classList.add('slide-left');
+      body.classList.remove('slide-right');
+    });
+  
+    rightZone.addEventListener('mouseenter', () => {
+      body.classList.add('slide-right');
+      body.classList.remove('slide-left');
+    });
+  
+    leftZone.addEventListener('mouseleave', () => {
+      body.classList.remove('slide-left');
+    });
+  
+    rightZone.addEventListener('mouseleave', () => {
+      body.classList.remove('slide-right');
+    });
+  </script>
 </body>
 </html>
