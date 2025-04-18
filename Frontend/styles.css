@@ -162,11 +162,12 @@ body {
   }
 }
 
+/* Adjust the hover zones to be vertically centered */
 .hover-zone {
   position: fixed;
-  top: 0;
-  height: 100vh;
   width: 100px;
+  height: 50vh; /* Only middle vertical portion */
+  top: 25vh;     /* Start one-quarter down */
   z-index: 1;
 }
 
@@ -178,13 +179,18 @@ body {
   right: 0;
 }
 
-.hover-zone.left:hover ~ .hero {
+body.slide-left .hero {
   transform: translateX(-120%);
 }
 
-.hover-zone.right:hover ~ .hero {
+body.slide-right .hero {
   transform: translateX(120%);
 }
+
+.hero {
+  transition: transform 0.8s ease-in-out;
+}
+
 .social-footer {
   position: fixed;
   bottom: 20px;
@@ -212,5 +218,63 @@ body {
 
 .social-icons a:hover {
   transform: scale(1.1);
+}
+
+.account-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.account-icon img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.account-icon img:hover {
+  transform: scale(1.05);
+}
+
+.account-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  width: 220px;
+}
+
+.account-dropdown form {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-dropdown input {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.account-dropdown button {
+  padding: 0.5rem;
+  border: none;
+  background-color: #0056b3;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.account-dropdown .register-link {
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 

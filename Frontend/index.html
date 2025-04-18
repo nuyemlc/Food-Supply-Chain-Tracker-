@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Food Supply Chain Tracker</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="homepage">
+
+  <div class="account-wrapper">
+    <div class="account-icon" onclick="toggleAccountDropdown()">
+      <img src="images/person-icon.png" alt="Account" />
+    </div>
+    <div class="account-dropdown" id="accountDropdown">
+      <form>
+        <input type="text" placeholder="Username" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <div class="register-link">New here? <a href="#">Register</a></div>
+      </form>
+    </div>
+  </div>
+
   <div class="hover-zone left"></div>
   <div class="hover-zone right"></div>
+
   <section class="hero">
     <div class="hero-content">
       <h1>Welcome to Food Supply Chain Tracker</h1>
@@ -26,28 +42,28 @@
     <div id="journeyCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="images/farm.jpg" class="d-block w-100" alt="Farm harvest">
+          <img src="images/farm.jpg" class="d-block w-100" alt="Farm harvest" />
           <div class="carousel-caption d-none d-md-block">
             <h5>Farm to Fork</h5>
             <p>Fresh, organic produce from ethical farms.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="images/food in factory.jpg" class="d-block w-100" alt="Factory preparation">
+          <img src="images/food in factory.jpg" class="d-block w-100" alt="Factory preparation" />
           <div class="carousel-caption d-none d-md-block">
             <h5>Processing Stage</h5>
             <p>Safe and sustainable food handling and packaging.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="images/food-transportation.jpg" class="d-block w-100" alt="Food transportation">
+          <img src="images/food-transportation.jpg" class="d-block w-100" alt="Food transportation" />
           <div class="carousel-caption d-none d-md-block">
             <h5>Transport & Shipping</h5>
             <p>Efficient and low-emission food logistics.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="images/food in store.jpg" class="d-block w-100" alt="Food in store">
+          <img src="images/food in store.jpg" class="d-block w-100" alt="Food in store" />
           <div class="carousel-caption d-none d-md-block">
             <h5>Retail Stage</h5>
             <p>Products ready for sustainable consumption.</p>
@@ -64,46 +80,19 @@
       </button>
     </div>
   </section>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <div class="overlay"></div>
-  <script>
-    const leftZone = document.querySelector('.hover-zone.left');
-    const rightZone = document.querySelector('.hover-zone.right');
-    const body = document.body;
-  
-    leftZone.addEventListener('mouseenter', () => {
-      body.classList.add('slide-left');
-      body.classList.remove('slide-right');
-    });
-  
-    rightZone.addEventListener('mouseenter', () => {
-      body.classList.add('slide-right');
-      body.classList.remove('slide-left');
-    });
-  
-    leftZone.addEventListener('mouseleave', () => {
-      body.classList.remove('slide-left');
-    });
-  
-    rightZone.addEventListener('mouseleave', () => {
-      body.classList.remove('slide-right');
-    });
-  </script>
+
   <footer class="social-footer">
     <div class="social-icons">
-      <a href="https://instagram.com" target="_blank">
-        <img src="images/instagram.png" alt="Instagram">
-      </a>
-      <a href="https://youtube.com" target="_blank">
-        <img src="images/youtube.png" alt="YouTube">
-      </a>
-      <a href="https://tiktok.com" target="_blank">
-        <img src="images/tiktok.png" alt="TikTok">
-      </a>
-      <a href="https://twitter.com" target="_blank">
-        <img src="images/x.png" alt="X (Twitter)">
-      </a>
+      <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="https://youtube.com" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
+      <a href="https://tiktok.com" target="_blank"><img src="images/tiktok.png" alt="TikTok"></a>
+      <a href="https://twitter.com" target="_blank"><img src="images/x.png" alt="X (Twitter)"></a>
     </div>
-  </footer>  
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
