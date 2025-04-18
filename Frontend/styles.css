@@ -188,3 +188,26 @@ body {
 .hero{
   transition: transform 0.8s ease-in-out;
 }
+.social-footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  margin-top: 2rem;
+}
+
+.social-icons a {
+  margin: 0 0.8rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
