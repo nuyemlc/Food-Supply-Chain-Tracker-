@@ -19,11 +19,11 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
+  transition: transform 0.8s ease-in-out;
 }
 
 .hero-content {
@@ -59,6 +59,7 @@ body {
   background-color: #0056b3;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
+
 .btn.worldmap-btn {
   background-color: #28a745 !important; 
   color: #fff !important;
@@ -69,7 +70,6 @@ body {
   background-color: #218838 !important;
   box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
 }
-
 
 .nav-buttons .btn {
   min-width: 160px;
@@ -161,49 +161,52 @@ body {
     font-size: 2.2rem;
   }
 }
+
 .hover-zone {
-  position:  fixed;
+  position: fixed;
   top: 0;
   height: 100vh;
   width: 100px;
   z-index: 1;
 }
 
-.hover-zone.left{
+.hover-zone.left {
   left: 0;
 }
 
-.hover-zone.right{
+.hover-zone.right {
   right: 0;
 }
 
-.hover-zone.left:hover ~ .hero{
+.hover-zone.left:hover ~ .hero {
   transform: translateX(-120%);
 }
 
-.hover-zone.right:hover ~ .hero{
+.hover-zone.right:hover ~ .hero {
   transform: translateX(120%);
 }
-
-.hero{
-  transition: transform 0.8s ease-in-out;
-}
 .social-footer {
-  text-align: center;
-  padding: 2rem 0 1rem;
-  margin-top: 2rem;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .social-icons a {
-  margin: 0 0.8rem;
+  margin: 0 0.6rem;
   display: inline-block;
   transition: transform 0.3s ease;
 }
 
 .social-icons img {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
 }
 
