@@ -5,10 +5,14 @@ body {
   color: #222;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.homepage {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
 .hero {
@@ -61,7 +65,7 @@ body {
 }
 
 .btn.worldmap-btn {
-  background-color: #28a745 !important; 
+  background-color: #28a745 !important;
   color: #fff !important;
   border: none !important;
 }
@@ -145,29 +149,11 @@ body {
   color: #fff;
 }
 
-@media (max-width: 992px) {
-  .hero {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .hero-content,
-  .carousel {
-    max-width: 100%;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-}
-
-
 .hover-zone {
   position: fixed;
   width: 100px;
-  height: 50vh; 
-  top: 25vh;     
+  height: 50vh;
+  top: 25vh;
   z-index: 1;
 }
 
@@ -187,8 +173,62 @@ body.slide-right .hero {
   transform: translateX(120%);
 }
 
-.hero {
-  transition: transform 0.8s ease-in-out;
+.account-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.account-icon img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.account-icon img:hover {
+  transform: scale(1.05);
+}
+
+.account-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 220px;
+}
+
+.account-dropdown form {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-dropdown input {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.account-dropdown button {
+  padding: 0.5rem;
+  border: none;
+  background-color: #0056b3;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.account-dropdown .register-link {
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 .social-footer {
@@ -220,105 +260,62 @@ body.slide-right .hero {
   transform: scale(1.1);
 }
 
-.account-wrapper {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.account-icon img {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.account-icon img:hover {
-  transform: scale(1.05);
-}
-
-.account-dropdown {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 50px;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  width: 220px;
-}
-
-.account-dropdown form {
-  display: flex;
-  flex-direction: column;
-}
-
-.account-dropdown input {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.account-dropdown button {
-  padding: 0.5rem;
-  border: none;
-  background-color: #0056b3;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.account-dropdown .register-link {
-  font-size: 0.85rem;
-  text-align: center;
-  margin-top: 0.5rem;
-}
-
 .worldmap-page {
   display: block;
-  padding: 0;
-  margin: 0;
   background: url('images/Background.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
+  padding-top: 60px;
 }
 
-.worldmap-carousel-section {
+.map-info-section {
+  margin-bottom: 0.5rem;
+}
+
+.worldmap-display-section {
+  margin-top: 0;
+}
+
+.worldmap-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 100px;
+  gap: 2rem;
+}
+
+.map-info-section,
+.worldmap-display-section {
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
 }
 
-.carousel-placeholder {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
+.map-info-box,
+.map-display-box {
+  background: rgba(255, 255, 255, 0.95);
   padding: 2rem;
-  width: 80%;
+  border-radius: 16px;
+  max-width: 1000px;
+  width: 90%;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
 
-.map-section {
-  display: flex;
-  justify-content: center;
-  margin: 3rem 0;
+.map-info-box p,
+.map-display-box p {
+  font-size: 1.2rem;
+  margin: 0;
 }
 
-.map-placeholder {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  padding: 3rem;
-  width: 80%;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.map-display-box {
+  padding: 2rem;
 }
 
-.top-nav-buttons {
+.worldmap-nav-buttons {
   position: fixed;
   top: 20px;
   left: 50%;
@@ -327,3 +324,26 @@ body.slide-right .hero {
   display: flex;
   gap: 0.5rem;
 }
+
+.worldmap-nav-buttons .btn {
+  min-width: 160px;
+  height: 48px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.worldmap-nav-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+
