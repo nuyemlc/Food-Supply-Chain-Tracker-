@@ -1,4 +1,3 @@
-/* ----- Global Styles ----- */
 body {
   font-family: 'Segoe UI', sans-serif;
   background: url('images/Background.jpg') no-repeat center center fixed;
@@ -9,7 +8,6 @@ body {
   min-height: 100vh;
 }
 
-/* ----- Homepage Hero Section ----- */
 .homepage {
   display: flex;
   align-items: center;
@@ -49,7 +47,6 @@ body {
   font-size: 1.2rem;
 }
 
-/* ----- Buttons (Homepage + Nav) ----- */
 .nav-buttons, .nav-buttons-home {
   display: flex;
   flex-wrap: wrap;
@@ -73,7 +70,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Align search bar with buttons (Homepage + Other Pages) */
 .nav-buttons .search-bar, .nav-buttons-home .search-bar-home {
   display: flex;
   align-items: center;
@@ -88,19 +84,18 @@ body {
   outline: none;
   width: 220px;
   backdrop-filter: blur(4px);
-  margin-top: 0; /* Aligns with buttons */
-}
-
-.search-bar input:focus, .search-bar-home input:focus {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin-top: 0;
 }
 
 .search-bar-home {
   display: flex;
   width: 100%;
-  margin-top: 0.8rem; /* Adds space beneath the buttons */
+  margin-top: 0.8rem;
 }
 
+.search-bar input:focus, .search-bar-home input:focus {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
 .btn-primary {
   background-color: #0056b3;
@@ -113,7 +108,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
-/* Get Started Button Bigger */
 .hero .btn-primary {
   min-width: 180px;
   height: 52px;
@@ -162,7 +156,6 @@ body {
   background-color: #545b62;
 }
 
-/* ----- Top Nav (Other Pages) ----- */
 .top-nav {
   position: fixed;
   top: 20px;
@@ -177,7 +170,6 @@ body {
   gap: 0.5rem;
 }
 
-/* ----- Carousel ----- */
 .carousel {
   flex: 1;
   min-width: 300px;
@@ -198,7 +190,6 @@ body {
   color: #fff;
 }
 
-/* ----- Hover Slide (Homepage Only) ----- */
 .hover-zone {
   position: fixed;
   width: 100px;
@@ -223,7 +214,6 @@ body.slide-right .hero {
   transform: translateX(120%);
 }
 
-/* ----- Account Dropdown ----- */
 .account-wrapper {
   position: fixed;
   top: 20px;
@@ -282,7 +272,6 @@ body.slide-right .hero {
   margin-top: 0.5rem;
 }
 
-/* ----- Social Footer ----- */
 .social-footer {
   position: fixed;
   bottom: 20px;
@@ -312,7 +301,6 @@ body.slide-right .hero {
   transform: scale(1.1);
 }
 
-/* ----- World Map Page Layout ----- */
 .worldmap-page {
   display: block;
   background: url('images/Background.jpg') no-repeat center center fixed;
