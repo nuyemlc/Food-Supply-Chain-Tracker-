@@ -50,7 +50,6 @@ body {
 .nav-buttons, .nav-buttons-home {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
 }
@@ -71,10 +70,16 @@ body {
   transition: all 0.3s ease;
 }
 
-.search-bar, .search-bar-home {
+.nav-buttons .search-bar {
   display: flex;
   align-items: center;
-  height: 48px;
+  margin-left: 1rem;
+}
+
+.nav-buttons-home .search-bar-home {
+  display: flex;
+  width: 100%;
+  margin-top: 0.8rem;
 }
 
 .search-bar input, .search-bar-home input {
@@ -82,14 +87,15 @@ body {
   border-radius: 12px;
   border: 1px solid #ccc;
   font-size: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   outline: none;
   width: 220px;
   backdrop-filter: blur(4px);
+  margin-top: 0;
 }
 
 .search-bar input:focus, .search-bar-home input:focus {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .btn-primary {
@@ -159,10 +165,16 @@ body {
   z-index: 999;
 }
 
-.nav-buttons {
-  display: flex;
+.productlist-page .top-nav .nav-buttons,
+.worldmap-page .top-nav .nav-buttons {
+  flex-wrap: nowrap;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+}
+
+.productlist-page .top-nav .search-bar,
+.worldmap-page .top-nav .search-bar {
+  margin-left: 1rem;
 }
 
 .carousel {
@@ -357,4 +369,38 @@ body.slide-right .hero {
   margin: 0;
 }
 
+.productlist-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 
+.productlist-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.product-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
