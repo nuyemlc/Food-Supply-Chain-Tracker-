@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product List - Food Supply Chain Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="worldmap-page">
+
+  <div class="account-wrapper">
+    <div class="account-icon" onclick="toggleAccountDropdown()">
+      <img src="images/person-icon.png" alt="Account" />
+    </div>
+    <div class="account-dropdown" id="accountDropdown">
+      <form>
+        <input type="text" placeholder="Username" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <div class="register-link">New here? <a href="#">Register</a></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="top-nav">
+    <div class="nav-buttons">
+      <a href="index.html" class="btn btn-primary">🏠 Home</a>
+      <a href="productlist.html" class="btn btn-warning">📦 Product List</a>
+      <a href="compare.html" class="btn btn-info">📊 Compare Emissions</a>
+      <a href="reviews.html" class="btn btn-secondary">💬 Reviews</a>
+      <div class="search-bar">
+        <input type="text" placeholder="Search foods..." />
+      </div>
+    </div>
+  </div>
+
+  <div class="productlist-main">
+    <div class="productlist-section">
+      <h2>Meats</h2>
+      <div class="product-grid">
+        <div class="product-card">Chicken</div>
+        <div class="product-card">Beef</div>
+        <div class="product-card">Lamb</div>
+      </div>
+    </div>
+
+    <div class="productlist-section">
+      <h2>Fruits</h2>
+      <div class="product-grid">
+        <div class="product-card">Apple</div>
+        <div class="product-card">Banana</div>
+        <div class="product-card">Orange</div>
+      </div>
+    </div>
+
+    <div class="productlist-section">
+      <h2>Starch</h2>
+      <div class="product-grid">
+        <div class="product-card">Rice</div>
+        <div class="product-card">Potato</div>
+        <div class="product-card">Pasta</div>
+      </div>
+    </div>
+
+    <div class="productlist-section">
+      <h2>Dairy</h2>
+      <div class="product-grid">
+        <div class="product-card">Milk</div>
+        <div class="product-card">Cheese</div>
+        <div class="product-card">Yogurt</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="social-footer">
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="https://youtube.com" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
+      <a href="https://tiktok.com" target="_blank"><img src="images/tiktok.png" alt="TikTok"></a>
+      <a href="https://twitter.com" target="_blank"><img src="images/x.png" alt="X (Twitter)"></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
