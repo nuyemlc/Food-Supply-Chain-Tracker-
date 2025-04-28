@@ -416,3 +416,50 @@ body.slide-right .hero {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+.compare-page {
+  background: url('images/Background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 60px;
+}
+
+.compare-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 20px 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.compare-section h2 {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.compare-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.emission-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.emission-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+

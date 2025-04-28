@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compare Emissions - Food Supply Chain Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="compare-page">
+
+  <div class="account-wrapper">
+    <div class="account-icon" onclick="toggleAccountDropdown()">
+      <img src="images/person-icon.png" alt="Account" />
+    </div>
+    <div class="account-dropdown" id="accountDropdown">
+      <form>
+        <input type="text" placeholder="Username" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <div class="register-link">New here? <a href="#">Register</a></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="top-nav">
+    <div class="nav-buttons">
+      <a href="index.html" class="btn btn-primary">🏠 Home</a>
+      <a href="worldmap.html" class="btn worldmap-btn">🌍 World Map</a>
+      <a href="productlist.html" class="btn btn-warning">📦 Product List</a>
+      <a href="compareemission.html" class="btn btn-info">📊 Compare Emissions</a>
+      <a href="reviews.html" class="btn btn-secondary">💬 Reviews</a>
+      <div class="search-bar">
+        <input type="text" placeholder="Search foods..." />
+      </div>
+    </div>
+  </div>
+
+  <main class="compare-main">
+    <section class="compare-section">
+      <h2>Carbon Emissions Comparison</h2>
+      <div class="compare-content">
+        <div class="emission-box">
+          <h3>🍗 Chicken</h3>
+          <p>Carbon Emissions: 6.9 kg CO₂ per kg</p>
+        </div>
+        <div class="emission-box">
+          <h3>🥦 Broccoli</h3>
+          <p>Carbon Emissions: 0.5 kg CO₂ per kg</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="social-footer">
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="https://youtube.com" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
+      <a href="https://tiktok.com" target="_blank"><img src="images/tiktok.png" alt="TikTok"></a>
+      <a href="https://twitter.com" target="_blank"><img src="images/x.png" alt="X (Twitter)"></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
