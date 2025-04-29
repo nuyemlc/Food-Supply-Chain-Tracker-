@@ -417,6 +417,7 @@ body.slide-right .hero {
 }
 
 .compare-page {
+  display: block;
   background: url('images/Background.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
@@ -425,41 +426,60 @@ body.slide-right .hero {
 }
 
 .compare-main {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 100px 20px 60px 20px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
 }
 
-.compare-section h2 {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 1rem 2rem;
-  border-radius: 12px;
+.compare-header {
   text-align: center;
-  font-size: 1.8rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.compare-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.compare-header p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: #555;
 }
 
 .compare-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .emission-box {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   padding: 2rem;
+  border-radius: 16px;
+  width: 300px;
   text-align: center;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
 
-.emission-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+.compare-chart {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.chart-placeholder {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1.1rem;
 }
 
