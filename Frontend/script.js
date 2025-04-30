@@ -58,5 +58,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+const openReviewBtn = document.getElementById("openReviewBtn");
+const closeReviewBtn = document.getElementById("closeReviewBtn");
+const reviewModal = document.getElementById("reviewModal");
+
+if (openReviewBtn && closeReviewBtn && reviewModal) {
+  openReviewBtn.addEventListener("click", () => {
+    reviewModal.style.display = "block";
+  });
+
+  closeReviewBtn.addEventListener("click", () => {
+    reviewModal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === reviewModal) {
+      reviewModal.style.display = "none";
+    }
+  });
+}
+
   
   
