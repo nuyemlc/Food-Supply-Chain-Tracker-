@@ -590,3 +590,50 @@ body.slide-right .hero {
   font-size: 1.4rem;
   cursor: pointer;
 }
+
+.narrow-box {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.idea-section {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.idea-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.idea-section textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  resize: vertical;
+  font-size: 1rem;
+  min-height: 120px;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0056b3;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2000;
+  font-weight: 500;
+}

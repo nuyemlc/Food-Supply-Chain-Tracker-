@@ -37,7 +37,7 @@
   </div>
 
   <main class="reviews-main">
-    <section class="review-header">
+    <section class="review-header narrow-box">
       <h2>Customer Reviews</h2>
       <button class="btn btn-primary" id="openReviewBtn">Write a Review</button>
     </section>
@@ -53,6 +53,12 @@
         <p>“A great tool for sustainability awareness. Well done!”</p>
         <div class="stars">⭐⭐⭐⭐</div>
       </div>
+    </section>
+
+    <section class="idea-section">
+      <h3>Give us any ideas you would find useful for the website</h3>
+      <textarea placeholder="Your idea..." id="ideaInput" required></textarea>
+      <button class="btn btn-primary" id="submitIdeaBtn">Submit</button>
     </section>
   </main>
 
@@ -70,10 +76,12 @@
           <option value="2">⭐⭐</option>
           <option value="1">⭐</option>
         </select>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="submitReviewBtn">Submit</button>
       </form>
     </div>
   </div>
+
+  <div id="thankYouPopup" class="popup">Thank you for your feedback!</div>
 
   <footer class="social-footer">
     <div class="social-icons">
@@ -87,3 +95,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+

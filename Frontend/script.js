@@ -37,16 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const reviewBtn = document.getElementById("openReviewBtn");
+  const writeReviewBtn = document.getElementById("writeReviewBtn");
   const reviewModal = document.getElementById("reviewModal");
-  const closeReview = document.getElementById("closeReviewBtn");
+  const reviewClose = document.getElementById("reviewClose");
+  const thankYouPopup = document.getElementById("thankYouPopup");
+  const submitReviewBtn = document.getElementById("submitReview");
 
-  if (reviewBtn && reviewModal && closeReview) {
-    reviewBtn.addEventListener("click", () => {
+  if (writeReviewBtn && reviewModal && reviewClose && submitReviewBtn && thankYouPopup) {
+    writeReviewBtn.addEventListener("click", () => {
       reviewModal.style.display = "block";
     });
 
-    closeReview.addEventListener("click", () => {
+    reviewClose.addEventListener("click", () => {
       reviewModal.style.display = "none";
     });
 
@@ -55,28 +57,29 @@ document.addEventListener("DOMContentLoaded", () => {
         reviewModal.style.display = "none";
       }
     });
+
+    submitReviewBtn.addEventListener("click", () => {
+      reviewModal.style.display = "none";
+      showThankYouPopup();
+    });
+  }
+
+  const ideaForm = document.getElementById("ideaForm");
+  if (ideaForm) {
+    ideaForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      showThankYouPopup();
+      ideaForm.reset();
+    });
+  }
+
+  function showThankYouPopup() {
+    thankYouPopup.style.display = "block";
+    setTimeout(() => {
+      thankYouPopup.style.display = "none";
+    }, 3000);
   }
 });
-
-const openReviewBtn = document.getElementById("openReviewBtn");
-const closeReviewBtn = document.getElementById("closeReviewBtn");
-const reviewModal = document.getElementById("reviewModal");
-
-if (openReviewBtn && closeReviewBtn && reviewModal) {
-  openReviewBtn.addEventListener("click", () => {
-    reviewModal.style.display = "block";
-  });
-
-  closeReviewBtn.addEventListener("click", () => {
-    reviewModal.style.display = "none";
-  });
-
-  window.addEventListener("click", (e) => {
-    if (e.target === reviewModal) {
-      reviewModal.style.display = "none";
-    }
-  });
-}
 
   
   
