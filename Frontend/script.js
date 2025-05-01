@@ -124,8 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const baseCoords = coords[item.origin_country];
 
       if (baseCoords) {
-        // Apply small random offsets to simulate distributed locations
-        const randomOffset = () => (Math.random() - 0.5) * 1.2; // ~±0.6° jitter
+        const randomOffset = () => (Math.random() - 0.5) * 1.2; 
         const jitteredLat = baseCoords[0] + randomOffset();
         const jitteredLng = baseCoords[1] + randomOffset();
 
