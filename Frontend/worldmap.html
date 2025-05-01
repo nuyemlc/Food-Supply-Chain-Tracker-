@@ -4,11 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>World Map - Food Supply Chain Tracker</title>
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Leaflet CSS for interactive map -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="worldmap-page">
 
+  <!-- Account Login Dropdown -->
   <div class="account-wrapper">
     <div class="account-icon" onclick="toggleAccountDropdown()">
       <img src="images/person-icon.png" alt="Account" />
@@ -23,6 +34,7 @@
     </div>
   </div>
 
+  <!-- Top Navigation -->
   <div class="top-nav">
     <div class="nav-buttons">
       <a href="index.html" class="btn btn-primary">🏠 Home</a>
@@ -35,22 +47,26 @@
       </div>
     </div>
   </div>
-  
 
+  <!-- Page Content -->
   <div class="worldmap-main">
+    <!-- Info Section -->
     <section class="map-info-section">
       <div class="map-info-box">
         <p>Explore interactive visualisations and detailed product information</p>
       </div>
     </section>
-  
+
+    <!-- Map Display Section -->
     <section class="worldmap-display-section">
       <div class="map-display-box">
-        <p>📍 Visualise food origins and destinations on a world map</p>
+        <!-- Map container for Leaflet -->
+        <div id="foodMap" style="width: 100%; height: 100%; border-radius: 12px;"></div>
       </div>
     </section>
   </div>
-  
+
+  <!-- Footer -->
   <footer class="social-footer">
     <div class="social-icons">
       <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
@@ -60,6 +76,13 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
 </body>
 </html>
+
