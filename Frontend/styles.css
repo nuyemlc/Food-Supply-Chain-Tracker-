@@ -746,3 +746,45 @@ body.slide-right .hero {
   font-weight: 600;
   margin-right: 0.4rem;
 }
+#productModal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#productModal .modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: relative;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#productModal .modal-content h4 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+#productModal .modal-content p {
+  margin: 0.5rem 0;
+}
+
+#productModal .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #000;
+}

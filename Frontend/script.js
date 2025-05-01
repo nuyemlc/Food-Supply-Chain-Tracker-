@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🌍 World Map Page Setup
+  //World Map Page Setup
   if (body.classList.contains("worldmap-page")) {
     const map = L.map('foodMap').setView([20, 0], 2);
 
@@ -128,6 +128,55 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(err => {
         console.error('Error fetching origin data:', err);
       });
+      //Product List Setup 
+      if (document.body.classList.contains("productlist-page")) {
+        fetch('http://localhost:3000/api/products')
+          .then(res => res.json())
+          .then(data => {
+            data.forEach(item => {
+              const row = document.createElement('tr');
+              row.innerHTML = `<td>${item.name}</td>`;
+              row.addEventListener('click', () => {
+                document.getElementById('productModalContent').innerHTML = `
+                  <h4>${item.name}</h4>
+                  <p><strong>Country:</strong> ${item.origin_country}</p>
+                  <p><strong>Category:</strong> ${item.category}</p>
+                  <p><strong>CO₂ Emissions:</strong> ${item.co2_emissions} kg per kg</p>
+                  <p><strong>Organic:</strong> ${item.organic}</p>
+                  <p><strong>Ethical:</strong> ${item.ethical}</p>
+                  <p><strong>Transport:</strong> ${item.transport_method}</p>
+                `;
+                document.getElementById('productModal').style.display = 'block';
+              });
+      
+              const targetTable = {
+                'Meats': 'meatsTable',
+                'Starch': 'starchTable',
+                'Dairy': 'dairyTable',
+                'Vegetables & Fruits': 'vegfruitTable'
+              }[item.category];
+      
+              if (targetTable) {
+                document.getElementById(targetTable).appendChild(row);
+              }
+            });
+          })
+          .catch(err => {
+            console.error('Error loading products:', err);
+          });
+      
+        // Close modal when clicking outside or on close
+        window.addEventListener('click', (e) => {
+          const modal = document.getElementById('productModal');
+          if (e.target === modal) {
+            modal.style.display = 'none';
+          }
+        });
+      
+        document.getElementById('closeProductModal')?.addEventListener('click', () => {
+          document.getElementById('productModal').style.display = 'none';
+        });
+      }
   }
 });
   
