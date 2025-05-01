@@ -788,3 +788,34 @@ body.slide-right .hero {
   cursor: pointer;
   color: #000;
 }
+/* Adjust modal width and table spacing for comparison page */
+#compareSelectModal .modal-content {
+  max-width: 1200px;
+  width: 95%;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+#compareSelectModal h4 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+/* Chart container inside compare page */
+.compare-chart {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.compare-chart canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px;
+}

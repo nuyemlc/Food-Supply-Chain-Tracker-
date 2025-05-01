@@ -3,28 +3,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const rightZone = document.querySelector(".hover-zone.right");
   const body = document.body;
 
-  // Homepage sliding effect
+  // Homepage hover sliding zones (left/right edges)
   if (body.classList.contains("homepage")) {
     leftZone.addEventListener("mouseenter", () => {
       body.classList.add("slide-left");
       body.classList.remove("slide-right");
     });
-
     leftZone.addEventListener("mouseleave", () => {
       body.classList.remove("slide-left");
     });
-
     rightZone.addEventListener("mouseenter", () => {
       body.classList.add("slide-right");
       body.classList.remove("slide-left");
     });
-
     rightZone.addEventListener("mouseleave", () => {
       body.classList.remove("slide-right");
     });
   }
 
-  // Account dropdown toggle
+  // Account dropdown menu toggle logic
   const dropdown = document.getElementById("accountDropdown");
   const wrapper = document.querySelector(".account-wrapper");
 
@@ -39,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Review modal logic
+  // Review and idea modal setup
   const modal = document.getElementById("reviewModal");
   const openBtn = document.getElementById("openReviewBtn");
   const closeBtn = document.getElementById("closeReviewBtn");
@@ -91,10 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // World Map Page Setup
+  // World Map: show food locations with popup details
   if (body.classList.contains("worldmap-page")) {
     const map = L.map('foodMap').setView([20, 0], 2);
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
@@ -105,22 +101,20 @@ document.addEventListener("DOMContentLoaded", () => {
         data.forEach(item => {
           if (item.latitude && item.longitude) {
             const marker = L.marker([item.latitude, item.longitude]).addTo(map);
-
             marker.bindPopup(`<strong>${item.name}</strong><br>${item.origin_country}`);
-
             marker.on('click', () => {
               const infoBox = document.getElementById("foodInfo");
               infoBox.innerHTML = `
-              <h4>${item.name}</h4>
-              <div class="food-info-grid-horizontal">
-                <div><span>🌍 Country:</span> ${item.origin_country}</div>
-                <div><span>📦 Category:</span> ${item.category}</div>
-                <div><span>💨 CO₂:</span> ${item.co2_emissions} kg/kg</div>
-                <div><span>🌱 Organic:</span> ${item.organic}</div>
-                <div><span>✅ Ethical:</span> ${item.ethical}</div>
-                <div><span>🚚 Transport:</span> ${item.transport_method}</div>
-              </div>
-            `;
+                <h4>${item.name}</h4>
+                <div class="food-info-grid-horizontal">
+                  <div><span>🌍 Country:</span> ${item.origin_country}</div>
+                  <div><span>📦 Category:</span> ${item.category}</div>
+                  <div><span>💨 CO₂:</span> ${item.co2_emissions} kg/kg</div>
+                  <div><span>🌱 Organic:</span> ${item.organic}</div>
+                  <div><span>✅ Ethical:</span> ${item.ethical}</div>
+                  <div><span>🚚 Transport:</span> ${item.transport_method}</div>
+                </div>
+              `;
             });
           }
         });
@@ -130,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Product List Page Setup
+  // Product List: populate scrollable category tables
   if (body.classList.contains("productlist-page")) {
     fetch('http://localhost:3000/api/products')
       .then(res => res.json())
@@ -167,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error('Error loading products:', err);
       });
 
-    // Close modal when clicking outside or on close
     window.addEventListener('click', (e) => {
       const modal = document.getElementById('productModal');
       if (e.target === modal) {
@@ -179,6 +172,102 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('productModal').style.display = 'none';
     });
   }
+
+  // Compare Emissions: modal + chart comparison logic
+  if (body.classList.contains("compare-page")) {
+    const modal = document.getElementById("compareSelectModal");
+    const closeModal = document.getElementById("closeCompareModal");
+    const chartCanvas = document.getElementById("emissionsChart");
+    let chartInstance = null;
+    const selectedFoods = [];
+
+    // Open modal when clicking either selection box
+    document.querySelectorAll(".emission-box").forEach(box => {
+      box.addEventListener("click", () => {
+        modal.style.display = "block";
+      });
+    });
+
+    closeModal?.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    fetch("http://localhost:3000/api/products")
+      .then(res => res.json())
+      .then(data => {
+        const categoryMap = {
+          'Meats': 'compareMeats',
+          'Starch': 'compareStarch',
+          'Dairy': 'compareDairy',
+          'Vegetables & Fruits': 'compareVegFruit'
+        };
+
+        data.forEach(item => {
+          const tableId = categoryMap[item.category];
+          if (!tableId) return;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `<td>${item.name}</td>`;
+          row.style.cursor = "pointer";
+
+          row.addEventListener("click", () => {
+            if (selectedFoods.length >= 2) {
+              selectedFoods.shift(); // remove the earliest
+            }
+            selectedFoods.push(item);
+            if (selectedFoods.length === 2) {
+              drawChart(selectedFoods);
+              modal.style.display = "none";
+            }
+          });
+
+          document.getElementById(tableId)?.appendChild(row);
+        });
+      })
+      .catch(err => {
+        console.error("Error loading comparison foods:", err);
+      });
+
+    function drawChart(foods) {
+      const labels = foods.map(f => f.name);
+      const values = foods.map(f => parseFloat(f.co2_emissions || 0));
+
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      chartInstance = new Chart(chartCanvas, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "CO₂ Emissions (kg per kg)",
+            data: values,
+            backgroundColor: ["#007bff", "#28a745"]
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMax: 50,
+              title: {
+                display: true,
+                text: "kg CO₂ per kg"
+              }
+            }
+          }
+        }
+      });
+    }
+  }
 });
-  
   
