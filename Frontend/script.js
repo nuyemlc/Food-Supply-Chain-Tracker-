@@ -118,20 +118,26 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     fetch('http://localhost:3000/api/origins')
-      .then(res => res.json())
-      .then(data => {
-        data.forEach(item => {
-          const location = coords[item.origin_country];
-          if (location) {
-            L.marker(location)
-              .addTo(map)
-              .bindPopup(`<strong>${item.name}</strong><br>${item.origin_country}`);
-          }
-        });
-      })
-      .catch(err => {
-        console.error('Error fetching origin data:', err);
-      });
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(item => {
+      const baseCoords = coords[item.origin_country];
+
+      if (baseCoords) {
+        // Apply small random offsets to simulate distributed locations
+        const randomOffset = () => (Math.random() - 0.5) * 1.2; // ~±0.6° jitter
+        const jitteredLat = baseCoords[0] + randomOffset();
+        const jitteredLng = baseCoords[1] + randomOffset();
+
+        L.marker([jitteredLat, jitteredLng])
+          .addTo(map)
+          .bindPopup(`<strong>${item.name}</strong><br>${item.origin_country}`);
+      }
+    });
+  })
+  .catch(err => {
+    console.error('Error fetching origin data:', err);
+  });
   }
 });
 
