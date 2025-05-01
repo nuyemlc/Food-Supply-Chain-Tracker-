@@ -40,6 +40,27 @@ app.get('/api/origins', async (req, res) => {
   }
 });
 
+app.get('/api/products', async (req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT 
+        id,
+        name,
+        origin_country,
+        category,
+        co2_emissions,
+        organic,
+        ethical,
+        transport_method
+      FROM foods
+    `);
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching product list:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
