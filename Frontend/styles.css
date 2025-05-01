@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: url('images/Background.jpg') no-repeat center center fixed;
@@ -482,24 +483,6 @@ body.slide-right .hero {
   flex-wrap: wrap;
 }
 
-.emission-box {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
-  border-radius: 16px;
-  width: 300px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-}
-
-.compare-chart {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-}
-
 .chart-placeholder {
   height: 300px;
   display: flex;
@@ -802,20 +785,92 @@ body.slide-right .hero {
   margin-bottom: 1rem;
 }
 
-/* Chart container inside compare page */
-.compare-chart {
-  margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
-  border-radius: 16px;
+/* Container for the Compare Emissions page */
+.compare-page {
+  padding-top: 100px; 
+  padding-bottom: 120px; 
+  background: url('images/Background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Main structure wrapper for the comparison page content */
+.compare-main {
   max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Header box for comparison title and subtitle */
+.compare-header {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.compare-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.compare-header p {
+  font-size: 1rem;
+  margin-top: 0;
+  color: #555;
+}
+
+/* Selection boxes to choose products for comparison */
+.compare-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.emission-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.2rem;
+  border-radius: 14px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.emission-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Chart container for visual comparison */
+.compare-chart {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.8rem;
+  border-radius: 16px;
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .compare-chart canvas {
   width: 100% !important;
   height: auto !important;
-  max-height: 400px;
+  max-height: 320px;
 }
