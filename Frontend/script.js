@@ -37,49 +37,58 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const writeReviewBtn = document.getElementById("writeReviewBtn");
-  const reviewModal = document.getElementById("reviewModal");
-  const reviewClose = document.getElementById("reviewClose");
-  const thankYouPopup = document.getElementById("thankYouPopup");
-  const submitReviewBtn = document.getElementById("submitReview");
+  const modal = document.getElementById("reviewModal");
+  const openBtn = document.getElementById("openReviewBtn");
+  const closeBtn = document.getElementById("closeReviewBtn");
+  const popup = document.getElementById("thankYouPopup");
+  const reviewSubmit = document.getElementById("submitReviewBtn");
+  const ideaSubmit = document.getElementById("submitIdeaBtn");
 
-  if (writeReviewBtn && reviewModal && reviewClose && submitReviewBtn && thankYouPopup) {
-    writeReviewBtn.addEventListener("click", () => {
-      reviewModal.style.display = "block";
-    });
-
-    reviewClose.addEventListener("click", () => {
-      reviewModal.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-      if (e.target === reviewModal) {
-        reviewModal.style.display = "none";
-      }
-    });
-
-    submitReviewBtn.addEventListener("click", () => {
-      reviewModal.style.display = "none";
-      showThankYouPopup();
+  if (openBtn && modal) {
+    openBtn.addEventListener("click", () => {
+      modal.style.display = "block";
     });
   }
 
-  const ideaForm = document.getElementById("ideaForm");
-  if (ideaForm) {
-    ideaForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      showThankYouPopup();
-      ideaForm.reset();
+  if (closeBtn && modal) {
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
     });
   }
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 
   function showThankYouPopup() {
-    thankYouPopup.style.display = "block";
+    if (!popup) return;
+    popup.style.display = "block";
     setTimeout(() => {
-      thankYouPopup.style.display = "none";
+      popup.style.display = "none";
     }, 3000);
   }
+
+  if (reviewSubmit) {
+    reviewSubmit.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.style.display = "none";
+      showThankYouPopup();
+    });
+  }
+
+  if (ideaSubmit) {
+    ideaSubmit.addEventListener("click", () => {
+      const ideaBox = document.getElementById("ideaInput");
+      if (ideaBox && ideaBox.value.trim() !== "") {
+        ideaBox.value = "";
+        showThankYouPopup();
+      }
+    });
+  }
 });
+
 
   
   

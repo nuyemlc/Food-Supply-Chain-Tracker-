@@ -637,3 +637,47 @@ body.slide-right .hero {
   z-index: 2000;
   font-weight: 500;
 }
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.category-table {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-table h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.table-scroll {
+  flex-grow: 1;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.table-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-scroll td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+
