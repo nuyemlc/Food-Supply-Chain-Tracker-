@@ -17,19 +17,25 @@ app.get('/foods', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 app.get('/api/origins', async (req, res) => {
   try {
-    const [rows] = await db.query(
-      "SELECT name, origin_country, latitude, longitude FROM foods WHERE latitude IS NOT NULL AND longitude IS NOT NULL"
-    );
+    const [rows] = await db.query(`
+      SELECT 
+        name,
+        origin_country,
+        category,
+        co2_emissions,
+        organic,
+        ethical,
+        transport_method,
+        latitude,
+        longitude
+      FROM foods
+      WHERE latitude IS NOT NULL AND longitude IS NOT NULL
+    `);
     res.json(rows);
   } catch (err) {
     console.error('Error fetching origins:', err);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
- 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
 });
