@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>World Map - Food Supply Chain Tracker</title>
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS for layout and responsive design -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-  <!-- Leaflet CSS for interactive map -->
+  <!-- Leaflet CSS for map rendering -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
 
-  <!-- Custom Styles -->
+  <!-- Custom stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="worldmap-page">
 
-  <!-- Account Login Dropdown -->
+  <!-- Account icon and dropdown login form -->
   <div class="account-wrapper">
     <div class="account-icon" onclick="toggleAccountDropdown()">
       <img src="images/person-icon.png" alt="Account" />
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <!-- Top Navigation -->
+  <!-- Top navigation bar with page links and a search input -->
   <div class="top-nav">
     <div class="nav-buttons">
       <a href="index.html" class="btn btn-primary">🏠 Home</a>
@@ -48,9 +48,10 @@
     </div>
   </div>
 
-  <!-- Page Content -->
+  <!-- Main content area split into info and map display -->
   <div class="worldmap-main">
-    <!-- Info Section -->
+    
+    <!-- Section to display food item details on marker click -->
     <section class="map-info-section">
       <div class="map-info-box">
         <div id="foodInfo">
@@ -59,16 +60,16 @@
       </div>
     </section>
 
-    <!-- Map Display Section -->
+    <!-- Section containing the actual Leaflet map -->
     <section class="worldmap-display-section">
       <div class="map-display-box">
-        <!-- Map container for Leaflet -->
+        <!-- Leaflet map container -->
         <div id="foodMap" style="width: 100%; height: 100%; border-radius: 12px;"></div>
       </div>
     </section>
   </div>
 
-  <!-- Footer -->
+  <!-- Social media footer -->
   <footer class="social-footer">
     <div class="social-icons">
       <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
@@ -78,13 +79,12 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Custom JavaScript for interactivity (handles map logic too) -->
   <script src="script.js"></script>
 
-  <!-- Leaflet JS -->
+  <!-- Leaflet JS for rendering the interactive map -->
   <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
   </script>
 </body>
 </html>
-

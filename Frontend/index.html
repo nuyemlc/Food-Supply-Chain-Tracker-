@@ -1,47 +1,66 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Food Supply Chain Tracker</title>
+
+  <!-- Bootstrap CSS for responsive layout and styling -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="homepage">
 
+  <!-- Account login/register icon and dropdown form -->
   <div class="account-wrapper">
     <div class="account-icon" onclick="toggleAccountDropdown()">
       <img src="images/person-icon.png" alt="Account" />
     </div>
     <div class="account-dropdown" id="accountDropdown">
-      <form>
-        <input type="text" placeholder="Username" required />
-        <input type="password" placeholder="Password" required />
-        <button type="submit">Login</button>
-        <div class="register-link">New here? <a href="#">Register</a></div>
+      <form id="authForm">
+        <input type="text" id="userName" placeholder="Name" required />
+        <input type="email" id="userEmail" placeholder="Email" required />
+        <input type="password" id="userPassword" placeholder="Password" required />
+        <button type="submit" id="authButton">Register</button>
+        <div class="register-link">
+          Already have an account? <a href="#" id="toggleAuth">Login</a>
+        </div>
       </form>
-    </div>
+      <div id="welcomeMessage" style="display:none;"></div>
+    </div>    
   </div>
 
+  <!-- Invisible zones to trigger hero slide effect on hover -->
   <div class="hover-zone left"></div>
   <div class="hover-zone right"></div>
 
+  <!-- Hero section with main intro, buttons, and search bar -->
   <section class="hero">
     <div class="hero-content">
       <h1>Welcome to Food Supply Chain Tracker</h1>
       <p>Track food origins and destinations with ease.</p>
+
+      <!-- Get Started CTA -->
       <a href="worldmap.html" class="btn btn-primary">Get Started</a>
+
+      <!-- Navigation buttons styled for homepage -->
       <div class="nav-buttons-home">
         <a href="worldmap.html" class="btn worldmap-btn">🌍 World Map</a>
         <a href="productlist.html" class="btn btn-warning">📦 Product List</a>
         <a href="compareemission.html" class="btn btn-info">📊 Compare Emissions</a>
         <a href="reviews.html" class="btn btn-secondary">💬 Reviews</a>
       </div>
-      <div class="search-bar-home">
+
+      <!-- Search bar positioned under nav buttons -->
+      <div class="search-bar-home" style="position: relative;">
         <input type="text" placeholder="Search foods..." />
+        <!-- Live search results will be injected here -->
+        <div id="searchResults" class="search-results"></div>
       </div>      
     </div>
-  
+
+    <!-- Image carousel showing food supply stages -->
     <div id="journeyCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -73,6 +92,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Carousel navigation controls -->
       <button class="carousel-control-prev" type="button" data-bs-target="#journeyCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -84,8 +105,10 @@
     </div>
   </section>
 
+  <!-- Overlay used for hover effects -->
   <div class="overlay"></div>
 
+  <!-- Footer with social links -->
   <footer class="social-footer">
     <div class="social-icons">
       <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
@@ -95,6 +118,15 @@
     </div>
   </footer>
 
+  <!-- Modal that appears when user clicks a food from search -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span id="closeProductModal" class="close-btn">&times;</span>
+      <div id="productModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap and custom script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>

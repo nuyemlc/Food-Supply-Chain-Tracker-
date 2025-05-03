@@ -4,11 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reviews - Food Supply Chain Tracker</title>
+
+  <!-- Bootstrap CSS for responsive layout -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="reviews-page">
 
+  <!-- Account icon with dropdown login form -->
   <div class="account-wrapper">
     <div class="account-icon" onclick="toggleAccountDropdown()">
       <img src="images/person-icon.png" alt="Account" />
@@ -23,6 +27,7 @@
     </div>
   </div>
 
+  <!-- Navigation bar with page links and search bar -->
   <div class="top-nav">
     <div class="nav-buttons">
       <a href="index.html" class="btn btn-primary">🏠 Home</a>
@@ -36,12 +41,16 @@
     </div>
   </div>
 
+  <!-- Main reviews section -->
   <main class="reviews-main">
+    
+    <!-- Header with call-to-action button -->
     <section class="review-header narrow-box">
       <h2>Customer Reviews</h2>
       <button class="btn btn-primary" id="openReviewBtn">Write a Review</button>
     </section>
 
+    <!-- Grid displaying submitted user reviews -->
     <section class="review-grid">
       <div class="review-card">
         <h4>Lisa Haskel.</h4>
@@ -55,6 +64,7 @@
       </div>
     </section>
 
+    <!-- Textarea for user-submitted improvement ideas -->
     <section class="idea-section">
       <h3>Give us any ideas you would find useful for the website</h3>
       <textarea placeholder="Your idea..." id="ideaInput" required></textarea>
@@ -62,6 +72,7 @@
     </section>
   </main>
 
+  <!-- Modal for writing and submitting a new review -->
   <div id="reviewModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" id="closeReviewBtn">&times;</span>
@@ -81,8 +92,10 @@
     </div>
   </div>
 
+  <!-- Simple popup confirmation after review submission -->
   <div id="thankYouPopup" class="popup">Thank you for your feedback!</div>
 
+  <!-- Footer with social icons and links -->
   <footer class="social-footer">
     <div class="social-icons">
       <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
@@ -92,7 +105,7 @@
     </div>
   </footer>
 
+  <!-- JavaScript file with custom functionality -->
   <script src="script.js"></script>
 </body>
 </html>
-

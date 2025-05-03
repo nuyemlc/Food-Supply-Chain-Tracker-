@@ -4,11 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Product List - Food Supply Chain Tracker</title>
+
+  <!-- Bootstrap CSS for layout and responsive design -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="productlist-page">
 
+  <!-- Account icon and dropdown login form -->
   <div class="account-wrapper">
     <div class="account-icon" onclick="toggleAccountDropdown()">
       <img src="images/person-icon.png" alt="Account" />
@@ -23,6 +27,7 @@
     </div>
   </div>
 
+  <!-- Top navigation bar with page links and search input -->
   <div class="top-nav">
     <div class="nav-buttons">
       <a href="index.html" class="btn btn-primary">🏠 Home</a>
@@ -36,9 +41,12 @@
     </div>
   </div>
 
+  <!-- Main content section for displaying product categories -->
   <main class="productlist-main">
     <section class="productlist-section">
       <h2>Our Product Categories</h2>
+
+      <!-- Four scrollable tables grouped by food category -->
       <div class="table-row">
         <div class="category-table">
           <h3>🥩 Meats</h3>
@@ -80,6 +88,7 @@
     </section>    
   </main>
 
+  <!-- Footer with social links -->
   <footer class="social-footer">
     <div class="social-icons">
       <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
@@ -89,13 +98,15 @@
     </div>
   </footer>
 
+  <!-- Modal for displaying selected product details -->
   <div id="productModal" class="modal">
     <div class="modal-content">
       <span id="closeProductModal" class="close-btn">&times;</span>
       <div id="productModalContent"></div>
     </div>
   </div>  
-</div>
-<script src="script.js"></script>
+
+  <!-- Script for dynamic interactivity -->
+  <script src="script.js"></script>
 </body>
 </html>
