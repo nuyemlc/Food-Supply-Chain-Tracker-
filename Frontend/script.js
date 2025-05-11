@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
 
-  // Homepage: Slide background image on hover over left/right zones
+  //Homepage: Slide background image on hover over left/right zones
   const leftZone = document.querySelector(".hover-zone.left");
   const rightZone = document.querySelector(".hover-zone.right");
   if (body.classList.contains("homepage")) {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rightZone?.addEventListener("mouseleave", () => body.classList.remove("slide-right"));
   }
 
-  // Toggle account dropdown visibility
+  //Toggle account dropdown visibility
   const dropdown = document.getElementById("accountDropdown");
   const wrapper = document.querySelector(".account-wrapper");
   document.querySelector(".account-icon")?.addEventListener("click", (e) => {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Handle login/register switching and form submission
+  //Login/Register toggle and form submission
   const authForm = document.getElementById("authForm");
   const toggleLink = document.getElementById("toggleAuth");
   const authButton = document.getElementById("authButton");
@@ -74,10 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Automatically greet the logged-in user if session is active
   fetch("http://localhost:3000/api/user")
-    .then((res) => res.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
       if (data.loggedIn) {
         welcomeMessage.textContent = `Hi, ${data.name}!`;
         welcomeMessage.style.display = "block";
@@ -85,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-  // World Map page: Display markers and food info on map
+  //World Map: Load food origins and markers
   if (body.classList.contains("worldmap-page")) {
     const map = L.map("foodMap").setView([20, 0], 2);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -117,14 +116,14 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Product List page: Table population and modal popups
+  //Product list table + modal
   if (body.classList.contains("productlist-page")) {
     fetch("http://localhost:3000/api/products")
       .then(res => res.json())
       .then(data => {
         data.forEach(item => {
           const row = document.createElement("tr");
-          row.innerHTML = `<td>${item.name}</td>`;
+          row.innerHTML = `<td>${item.name} <span style="color:#888;font-size:0.9rem;">(${item.origin_country})</span></td>`;
           row.addEventListener("click", () => {
             document.getElementById("productModalContent").innerHTML = `
               <h4>${item.name}</h4>
@@ -154,23 +153,14 @@ document.addEventListener("DOMContentLoaded", () => {
         e.target.style.display = "none";
       }
     });
-
-    document.getElementById("closeProductModal")?.addEventListener("click", () => {
-      document.getElementById("productModal").style.display = "none";
-    });
   }
 
-  // Also close product modal with Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      const modal = document.getElementById("productModal");
-      if (modal.style.display === "block") {
-        modal.style.display = "none";
-      }
-    }
+  //Close modal with the X button 
+  document.getElementById("closeProductModal")?.addEventListener("click", () => {
+    document.getElementById("productModal").style.display = "none";
   });
 
-  // Homepage search functionality
+  //Homepage: Live search 
   const searchInput = document.querySelector('.search-bar-home input');
   const searchResults = document.getElementById('searchResults');
   let allProducts = [];
@@ -223,7 +213,95 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Reviews Page: Manage review and idea popup feedback
+  //Compare Emissions Chart Logic
+  if (body.classList.contains("compare-page")) {
+    const modal = document.getElementById("compareSelectModal");
+    const closeModal = document.getElementById("closeCompareModal");
+    const chartCanvas = document.getElementById("emissionsChart");
+    let chartInstance = null;
+    const selectedFoods = [];
+
+    document.querySelectorAll(".emission-box").forEach(box => {
+      box.addEventListener("click", () => {
+        modal.style.display = "block";
+      });
+    });
+
+    closeModal?.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    fetch("http://localhost:3000/api/products")
+      .then(res => res.json())
+      .then(data => {
+        const categoryMap = {
+          Meats: "compareMeats",
+          Starch: "compareStarch",
+          Dairy: "compareDairy",
+          "Vegetables & Fruits": "compareVegFruit",
+        };
+
+        data.forEach(item => {
+          const tableId = categoryMap[item.category];
+          if (!tableId) return;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `<td>${item.name}</td>`;
+          row.style.cursor = "pointer";
+
+          row.addEventListener("click", () => {
+            if (selectedFoods.length >= 2) selectedFoods.shift();
+            selectedFoods.push(item);
+            if (selectedFoods.length === 2) {
+              drawChart(selectedFoods);
+              modal.style.display = "none";
+            }
+          });
+
+          document.getElementById(tableId)?.appendChild(row);
+        });
+      });
+
+    function drawChart(foods) {
+      const labels = foods.map(f => f.name);
+      const values = foods.map(f => parseFloat(f.co2_emissions || 0));
+
+      if (chartInstance) chartInstance.destroy();
+
+      chartInstance = new Chart(chartCanvas, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "CO₂ Emissions (kg per kg)",
+            data: values,
+            backgroundColor: ["#ff7f0e", "#1f77b4"]
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "kg CO₂ per kg"
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+
+  //Reviews page: handle review and idea modal feedback
   if (body.classList.contains("reviews-page")) {
     const openReviewBtn = document.getElementById("openReviewBtn");
     const reviewModal = document.getElementById("reviewModal");
@@ -254,7 +332,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 3000);
     });
 
-    // Show popup after idea submission
     const submitIdeaBtn = document.getElementById("submitIdeaBtn");
     const ideaInput = document.getElementById("ideaInput");
 
@@ -269,3 +346,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
